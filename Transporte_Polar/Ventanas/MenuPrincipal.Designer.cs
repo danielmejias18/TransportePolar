@@ -39,6 +39,8 @@
             this.buttonBuscarCamion = new System.Windows.Forms.Button();
             this.buttonIncluirCamion = new System.Windows.Forms.Button();
             this.tabPageRegistrarViajes = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxPlacaPorViaje = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButtonPagado = new System.Windows.Forms.RadioButton();
             this.radioButtonRealizado = new System.Windows.Forms.RadioButton();
@@ -67,6 +69,7 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.dataGridViewCuentasporPagar = new System.Windows.Forms.DataGridView();
             this.ColumnCedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnGuiaViaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCodigoDelViaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCantidadViajesCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             tabControlRegistrarCamion = new System.Windows.Forms.TabControl();
@@ -90,7 +93,7 @@
             tabControlRegistrarCamion.Location = new System.Drawing.Point(2, 53);
             tabControlRegistrarCamion.Name = "tabControlRegistrarCamion";
             tabControlRegistrarCamion.SelectedIndex = 0;
-            tabControlRegistrarCamion.Size = new System.Drawing.Size(694, 395);
+            tabControlRegistrarCamion.Size = new System.Drawing.Size(786, 395);
             tabControlRegistrarCamion.TabIndex = 0;
             // 
             // tabPageRegistrarCamion
@@ -109,7 +112,7 @@
             this.tabPageRegistrarCamion.Location = new System.Drawing.Point(4, 50);
             this.tabPageRegistrarCamion.Name = "tabPageRegistrarCamion";
             this.tabPageRegistrarCamion.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRegistrarCamion.Size = new System.Drawing.Size(686, 341);
+            this.tabPageRegistrarCamion.Size = new System.Drawing.Size(778, 341);
             this.tabPageRegistrarCamion.TabIndex = 0;
             this.tabPageRegistrarCamion.Text = "Registrar camion";
             // 
@@ -218,6 +221,8 @@
             this.tabPageRegistrarViajes.AccessibleDescription = "Registrar Viajes";
             this.tabPageRegistrarViajes.AccessibleName = "Registrar Viajes";
             this.tabPageRegistrarViajes.BackColor = System.Drawing.Color.Navy;
+            this.tabPageRegistrarViajes.Controls.Add(this.label10);
+            this.tabPageRegistrarViajes.Controls.Add(this.textBoxPlacaPorViaje);
             this.tabPageRegistrarViajes.Controls.Add(this.groupBox1);
             this.tabPageRegistrarViajes.Controls.Add(this.label5);
             this.tabPageRegistrarViajes.Controls.Add(this.comboBoxCodigoViaje);
@@ -231,17 +236,37 @@
             this.tabPageRegistrarViajes.Location = new System.Drawing.Point(4, 50);
             this.tabPageRegistrarViajes.Name = "tabPageRegistrarViajes";
             this.tabPageRegistrarViajes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRegistrarViajes.Size = new System.Drawing.Size(686, 341);
+            this.tabPageRegistrarViajes.Size = new System.Drawing.Size(778, 341);
             this.tabPageRegistrarViajes.TabIndex = 1;
             this.tabPageRegistrarViajes.Text = "Registrar Viajes";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label10.Location = new System.Drawing.Point(254, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(230, 34);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Placa Del Camion";
+            // 
+            // textBoxPlacaPorViaje
+            // 
+            this.textBoxPlacaPorViaje.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBoxPlacaPorViaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPlacaPorViaje.Location = new System.Drawing.Point(260, 62);
+            this.textBoxPlacaPorViaje.Name = "textBoxPlacaPorViaje";
+            this.textBoxPlacaPorViaje.Size = new System.Drawing.Size(213, 28);
+            this.textBoxPlacaPorViaje.TabIndex = 20;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButtonPagado);
             this.groupBox1.Controls.Add(this.radioButtonRealizado);
-            this.groupBox1.Location = new System.Drawing.Point(158, 219);
+            this.groupBox1.Location = new System.Drawing.Point(289, 137);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(213, 122);
+            this.groupBox1.Size = new System.Drawing.Size(177, 122);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             // 
@@ -273,7 +298,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(152, 182);
+            this.label5.Location = new System.Drawing.Point(253, 100);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(213, 34);
             this.label5.TabIndex = 18;
@@ -282,7 +307,7 @@
             // comboBoxCodigoViaje
             // 
             this.comboBoxCodigoViaje.FormattingEnabled = true;
-            this.comboBoxCodigoViaje.Location = new System.Drawing.Point(158, 137);
+            this.comboBoxCodigoViaje.Location = new System.Drawing.Point(6, 137);
             this.comboBoxCodigoViaje.Name = "comboBoxCodigoViaje";
             this.comboBoxCodigoViaje.Size = new System.Drawing.Size(213, 29);
             this.comboBoxCodigoViaje.TabIndex = 16;
@@ -292,7 +317,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(161, 100);
+            this.label3.Location = new System.Drawing.Point(9, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(210, 34);
             this.label3.TabIndex = 15;
@@ -304,7 +329,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(152, 20);
+            this.label4.Location = new System.Drawing.Point(0, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(218, 34);
             this.label4.TabIndex = 13;
@@ -314,7 +339,7 @@
             // 
             this.textBoxNumeroGuia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxNumeroGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxNumeroGuia.Location = new System.Drawing.Point(158, 62);
+            this.textBoxNumeroGuia.Location = new System.Drawing.Point(6, 62);
             this.textBoxNumeroGuia.Name = "textBoxNumeroGuia";
             this.textBoxNumeroGuia.Size = new System.Drawing.Size(213, 28);
             this.textBoxNumeroGuia.TabIndex = 12;
@@ -332,6 +357,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonActualizarViajes
             // 
@@ -346,6 +372,7 @@
             this.buttonActualizarViajes.TabIndex = 10;
             this.buttonActualizarViajes.Text = "Actualizar";
             this.buttonActualizarViajes.UseVisualStyleBackColor = false;
+            this.buttonActualizarViajes.Click += new System.EventHandler(this.buttonActualizarViajes_Click);
             // 
             // buttonBuscarViajes
             // 
@@ -375,7 +402,7 @@
             this.buttonIncluirViajes.TabIndex = 8;
             this.buttonIncluirViajes.Text = "Incluir";
             this.buttonIncluirViajes.UseVisualStyleBackColor = false;
-            this.buttonIncluirViajes.Click += new System.EventHandler(this.buttonIncluirViajes_Click);
+            this.buttonIncluirViajes.Click += new System.EventHandler(this.buttonIncluirViajes_Click_1);
             // 
             // tabPageRegistrarCodigo
             // 
@@ -395,7 +422,7 @@
             this.tabPageRegistrarCodigo.Location = new System.Drawing.Point(4, 50);
             this.tabPageRegistrarCodigo.Name = "tabPageRegistrarCodigo";
             this.tabPageRegistrarCodigo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRegistrarCodigo.Size = new System.Drawing.Size(686, 341);
+            this.tabPageRegistrarCodigo.Size = new System.Drawing.Size(778, 341);
             this.tabPageRegistrarCodigo.TabIndex = 2;
             this.tabPageRegistrarCodigo.Text = "Registrar Codigo";
             // 
@@ -472,7 +499,7 @@
             this.buttonClearCodigo.TabIndex = 11;
             this.buttonClearCodigo.Text = "Clear";
             this.buttonClearCodigo.UseVisualStyleBackColor = false;
-            this.buttonClearCodigo.Click += new System.EventHandler(this.buttonClearCodigo_Click);
+            this.buttonClearCodigo.Click += new System.EventHandler(this.buttonClearCodigo_Click_1);
             // 
             // buttonActualizarCodigo
             // 
@@ -530,7 +557,7 @@
             this.tabPageReportePagos.Location = new System.Drawing.Point(4, 50);
             this.tabPageReportePagos.Name = "tabPageReportePagos";
             this.tabPageReportePagos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageReportePagos.Size = new System.Drawing.Size(686, 341);
+            this.tabPageReportePagos.Size = new System.Drawing.Size(778, 341);
             this.tabPageReportePagos.TabIndex = 3;
             this.tabPageReportePagos.Text = "Reporte de Pagos";
             // 
@@ -539,18 +566,18 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(3, 0);
+            this.label9.Location = new System.Drawing.Point(17, 3);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(448, 34);
+            this.label9.Size = new System.Drawing.Size(240, 34);
             this.label9.TabIndex = 9;
-            this.label9.Text = "Cedula Chofer o Placa Del Camion:";
+            this.label9.Text = "Placa Del Camion:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBoxSearch
             // 
             this.textBoxSearch.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxSearch.Location = new System.Drawing.Point(457, 3);
+            this.textBoxSearch.Location = new System.Drawing.Point(288, 11);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(213, 28);
             this.textBoxSearch.TabIndex = 8;
@@ -562,6 +589,7 @@
             this.dataGridViewCuentasporPagar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCuentasporPagar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCedula,
+            this.ColumnGuiaViaje,
             this.ColumnCodigoDelViaje,
             this.ColumnCantidadViajesCodigo});
             this.dataGridViewCuentasporPagar.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -570,15 +598,22 @@
             this.dataGridViewCuentasporPagar.Name = "dataGridViewCuentasporPagar";
             this.dataGridViewCuentasporPagar.RowHeadersWidth = 51;
             this.dataGridViewCuentasporPagar.RowTemplate.Height = 24;
-            this.dataGridViewCuentasporPagar.Size = new System.Drawing.Size(680, 268);
+            this.dataGridViewCuentasporPagar.Size = new System.Drawing.Size(772, 268);
             this.dataGridViewCuentasporPagar.TabIndex = 0;
             // 
             // ColumnCedula
             // 
-            this.ColumnCedula.HeaderText = "Cedula del Chofer";
+            this.ColumnCedula.HeaderText = "Placa del Camion";
             this.ColumnCedula.MinimumWidth = 6;
             this.ColumnCedula.Name = "ColumnCedula";
             this.ColumnCedula.Width = 125;
+            // 
+            // ColumnGuiaViaje
+            // 
+            this.ColumnGuiaViaje.HeaderText = "Guia del Viaje";
+            this.ColumnGuiaViaje.MinimumWidth = 6;
+            this.ColumnGuiaViaje.Name = "ColumnGuiaViaje";
+            this.ColumnGuiaViaje.Width = 125;
             // 
             // ColumnCodigoDelViaje
             // 
@@ -603,7 +638,7 @@
             this.Controls.Add(tabControlRegistrarCamion);
             this.Name = "MenuPrincipal";
             this.Text = "MenuPrincipal";
-            this.Load += new System.EventHandler(this.MenuPrincipal_Load);
+            this.Load += new System.EventHandler(this.MenuPrincipal_Load_1);
             tabControlRegistrarCamion.ResumeLayout(false);
             this.tabPageRegistrarCamion.ResumeLayout(false);
             this.tabPageRegistrarCamion.PerformLayout();
@@ -654,12 +689,15 @@
         private System.Windows.Forms.Button buttonBuscarCodigo;
         private System.Windows.Forms.Button buttonIncluirCodigo;
         private System.Windows.Forms.DataGridView dataGridViewCuentasporPagar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigoDelViaje;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidadViajesCodigo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxPrecio;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxPlacaPorViaje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCedula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGuiaViaje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigoDelViaje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidadViajesCodigo;
     }
 }

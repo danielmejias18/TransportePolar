@@ -10,6 +10,8 @@ namespace Transporte_Polar.Clases
     public class Viajes
     {
         public Viajes() { } 
+
+        public string PlacaCamion {  get; set; }
         public string ViajeCodigo {  get; set; }
         public string NumeroGuia { get; set; }
 

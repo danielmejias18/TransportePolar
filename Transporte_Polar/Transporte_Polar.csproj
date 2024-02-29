@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Camion\Camion.cs" />
-    <Compile Include="Clases\Chofer.cs" />
     <Compile Include="Clases\CodigosViajes\Codigo.cs" />
     <Compile Include="Clases\Camion\Repositorio.cs" />
     <Compile Include="Clases\CodigosViajes\RepositorioCodigos.cs" />

@@ -1,1 +1,1 @@
-[{"ViajeCodigo":"r3","NumeroGuia":"111","Estado":"Realizado"}]
+[{"PlacaCamion":"ab123","ViajeCodigo":"R1","NumeroGuia":"123456789","Estado":"Pagado"},{"PlacaCamion":"qsw2","ViajeCodigo":"R2","NumeroGuia":"22","Estado":"Realizado"},{"PlacaCamion":"ab123","ViajeCodigo":"r3","NumeroGuia":"1","Estado":"Pagado"}]
