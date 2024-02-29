@@ -72,6 +72,20 @@
             this.ColumnGuiaViaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCodigoDelViaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCantidadViajesCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageListaCamiones = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridViewCamiones = new System.Windows.Forms.DataGridView();
+            this.ColumnPlacaCamion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCedulaChofer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageListaViajes = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dataGridViewViajes = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCodigoViaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             tabControlRegistrarCamion = new System.Windows.Forms.TabControl();
             tabControlRegistrarCamion.SuspendLayout();
             this.tabPageRegistrarCamion.SuspendLayout();
@@ -80,6 +94,10 @@
             this.tabPageRegistrarCodigo.SuspendLayout();
             this.tabPageReportePagos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCuentasporPagar)).BeginInit();
+            this.tabPageListaCamiones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCamiones)).BeginInit();
+            this.tabPageListaViajes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewViajes)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlRegistrarCamion
@@ -88,6 +106,8 @@
             tabControlRegistrarCamion.Controls.Add(this.tabPageRegistrarViajes);
             tabControlRegistrarCamion.Controls.Add(this.tabPageRegistrarCodigo);
             tabControlRegistrarCamion.Controls.Add(this.tabPageReportePagos);
+            tabControlRegistrarCamion.Controls.Add(this.tabPageListaCamiones);
+            tabControlRegistrarCamion.Controls.Add(this.tabPageListaViajes);
             tabControlRegistrarCamion.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tabControlRegistrarCamion.ItemSize = new System.Drawing.Size(81, 46);
             tabControlRegistrarCamion.Location = new System.Drawing.Point(2, 53);
@@ -629,6 +649,152 @@
             this.ColumnCantidadViajesCodigo.Name = "ColumnCantidadViajesCodigo";
             this.ColumnCantidadViajesCodigo.Width = 125;
             // 
+            // tabPageListaCamiones
+            // 
+            this.tabPageListaCamiones.BackColor = System.Drawing.Color.Navy;
+            this.tabPageListaCamiones.Controls.Add(this.label11);
+            this.tabPageListaCamiones.Controls.Add(this.textBox1);
+            this.tabPageListaCamiones.Controls.Add(this.dataGridViewCamiones);
+            this.tabPageListaCamiones.Location = new System.Drawing.Point(4, 50);
+            this.tabPageListaCamiones.Name = "tabPageListaCamiones";
+            this.tabPageListaCamiones.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageListaCamiones.Size = new System.Drawing.Size(778, 341);
+            this.tabPageListaCamiones.TabIndex = 4;
+            this.tabPageListaCamiones.Text = "Lista de Camiones";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label11.Location = new System.Drawing.Point(17, 3);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(240, 34);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Placa Del Camion:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(288, 11);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(213, 28);
+            this.textBox1.TabIndex = 11;
+            // 
+            // dataGridViewCamiones
+            // 
+            this.dataGridViewCamiones.BackgroundColor = System.Drawing.Color.Navy;
+            this.dataGridViewCamiones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewCamiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCamiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnPlacaCamion,
+            this.ColumnCedulaChofer});
+            this.dataGridViewCamiones.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridViewCamiones.GridColor = System.Drawing.Color.Navy;
+            this.dataGridViewCamiones.Location = new System.Drawing.Point(3, 70);
+            this.dataGridViewCamiones.Name = "dataGridViewCamiones";
+            this.dataGridViewCamiones.RowHeadersWidth = 51;
+            this.dataGridViewCamiones.RowTemplate.Height = 24;
+            this.dataGridViewCamiones.Size = new System.Drawing.Size(772, 268);
+            this.dataGridViewCamiones.TabIndex = 10;
+            // 
+            // ColumnPlacaCamion
+            // 
+            this.ColumnPlacaCamion.HeaderText = "Placa del Camion";
+            this.ColumnPlacaCamion.MinimumWidth = 6;
+            this.ColumnPlacaCamion.Name = "ColumnPlacaCamion";
+            this.ColumnPlacaCamion.Width = 125;
+            // 
+            // ColumnCedulaChofer
+            // 
+            this.ColumnCedulaChofer.HeaderText = "Cedula del Chofer";
+            this.ColumnCedulaChofer.MinimumWidth = 6;
+            this.ColumnCedulaChofer.Name = "ColumnCedulaChofer";
+            this.ColumnCedulaChofer.Width = 125;
+            // 
+            // tabPageListaViajes
+            // 
+            this.tabPageListaViajes.BackColor = System.Drawing.Color.Navy;
+            this.tabPageListaViajes.Controls.Add(this.label12);
+            this.tabPageListaViajes.Controls.Add(this.textBox2);
+            this.tabPageListaViajes.Controls.Add(this.dataGridViewViajes);
+            this.tabPageListaViajes.Location = new System.Drawing.Point(4, 50);
+            this.tabPageListaViajes.Name = "tabPageListaViajes";
+            this.tabPageListaViajes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageListaViajes.Size = new System.Drawing.Size(778, 341);
+            this.tabPageListaViajes.TabIndex = 5;
+            this.tabPageListaViajes.Text = "Lista de Viajes";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label12.Location = new System.Drawing.Point(17, 3);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(237, 34);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "Numero de Guia :";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Location = new System.Drawing.Point(288, 11);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(213, 28);
+            this.textBox2.TabIndex = 14;
+            // 
+            // dataGridViewViajes
+            // 
+            this.dataGridViewViajes.BackgroundColor = System.Drawing.Color.Navy;
+            this.dataGridViewViajes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewViajes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewViajes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.ColumnCodigoViaje,
+            this.ColumnEstado});
+            this.dataGridViewViajes.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridViewViajes.GridColor = System.Drawing.Color.Navy;
+            this.dataGridViewViajes.Location = new System.Drawing.Point(3, 70);
+            this.dataGridViewViajes.Name = "dataGridViewViajes";
+            this.dataGridViewViajes.RowHeadersWidth = 51;
+            this.dataGridViewViajes.RowTemplate.Height = 24;
+            this.dataGridViewViajes.Size = new System.Drawing.Size(772, 268);
+            this.dataGridViewViajes.TabIndex = 13;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Placa del Camion";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Numero de Guia";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // ColumnCodigoViaje
+            // 
+            this.ColumnCodigoViaje.HeaderText = "Codigo del Viaje";
+            this.ColumnCodigoViaje.MinimumWidth = 6;
+            this.ColumnCodigoViaje.Name = "ColumnCodigoViaje";
+            this.ColumnCodigoViaje.Width = 125;
+            // 
+            // ColumnEstado
+            // 
+            this.ColumnEstado.HeaderText = "Estado del Viaje";
+            this.ColumnEstado.MinimumWidth = 6;
+            this.ColumnEstado.Name = "ColumnEstado";
+            this.ColumnEstado.Width = 125;
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -651,6 +817,12 @@
             this.tabPageReportePagos.ResumeLayout(false);
             this.tabPageReportePagos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCuentasporPagar)).EndInit();
+            this.tabPageListaCamiones.ResumeLayout(false);
+            this.tabPageListaCamiones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCamiones)).EndInit();
+            this.tabPageListaViajes.ResumeLayout(false);
+            this.tabPageListaViajes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewViajes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -699,5 +871,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnGuiaViaje;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigoDelViaje;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidadViajesCodigo;
+        private System.Windows.Forms.TabPage tabPageListaCamiones;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dataGridViewCamiones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPlacaCamion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCedulaChofer;
+        private System.Windows.Forms.TabPage tabPageListaViajes;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView dataGridViewViajes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodigoViaje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEstado;
     }
 }

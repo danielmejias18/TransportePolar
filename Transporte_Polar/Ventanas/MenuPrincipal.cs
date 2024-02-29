@@ -19,54 +19,7 @@ namespace Transporte_Polar.Ventanas
 {
     public partial class MenuPrincipal : Form
     {
-        public bool ValidarDatos()
-        {
-            bool datosValidos = true;
-
-            if (string.IsNullOrEmpty(textBoxCedulaChofer.Text))
-            {
-                MessageBox.Show("El campo Cedula Chofer está vacío.");
-                datosValidos = false;
-            }
-
-            if (string.IsNullOrEmpty(textBoxPlacaCamion.Text))
-            {
-                MessageBox.Show("El campo Placa Camión está vacío.");
-                datosValidos = false;
-            }
-
-            if (string.IsNullOrEmpty(textBoxDestinos.Text))
-            {
-                MessageBox.Show("El campo Destinos está vacío.");
-                datosValidos = false;
-            }
-
-            if (string.IsNullOrEmpty(textBoxPrecio.Text))
-            {
-                MessageBox.Show("El campo Precio está vacío.");
-                datosValidos = false;
-            }
-
-            if (string.IsNullOrEmpty(textBoxCodigoViaje.Text))
-            {
-                MessageBox.Show("El campo Código Viaje está vacío.");
-                datosValidos = false;
-            }
-
-            if (string.IsNullOrEmpty(textBoxNumeroGuia.Text))
-            {
-                MessageBox.Show("El campo Número de Guía está vacío.");
-                datosValidos = false;
-            }
-
-            if (!radioButtonPagado.Checked && !radioButtonRealizado.Checked)
-            {
-                MessageBox.Show("Debes seleccionar al menos una opción en el estado del viaje.");
-                datosValidos = false;
-            }
-
-            return datosValidos;
-        }
+        
 
         // Declaración de variables
         public string cedulaChofer, placaCamion, codigoViaje, destinosViaje, numeroGuia;
@@ -86,9 +39,78 @@ namespace Transporte_Polar.Ventanas
         public MenuPrincipal()
         {
             InitializeComponent();
+            LoadCamion();
+            LoadViajes();
             LoadData();
+           
         }
 
+        public void LoadCamion()
+        {
+            List<Camion> camion = Repositorio.ListaCamiones();
+            
+            // Extrae los ids de camiones y viajes y los muestra en el Data Grid View
+            if (camion != null)
+            {
+                FillCamiones( camion);
+            }
+            else 
+            {
+                
+            }
+        }
+        //metodo para llenar la lista de cammiones
+        public void FillCamiones( List<Camion> camiones)
+        {
+          
+            dataGridViewCuentasporPagar.Rows.Clear();
+            if (camiones != null)
+            {
+               
+                // Agrega las filas a la tabla en la GUI
+                for (int i = 0; i < camiones.Count(); i++)
+                {
+                    dataGridViewCamiones.Rows.Add(camiones[i].PlacaCamion, camiones[i].Cedulachofer);
+                }
+            }
+            else
+            {
+                dataGridViewCamiones.Rows.Clear();
+            }
+        }
+        public void LoadViajes()
+        {
+            List<Viajes> viaje = RepositorioViajes.ListaViajes();
+
+            // Extrae los ids de camiones y viajes y los muestra en el Data Grid View
+            if (viaje != null)
+            {
+                FillViajes(viaje);
+            }
+            else
+            {
+
+            }
+        }
+        //metodo para llenar la lista de cammiones
+        public void FillViajes(List<Viajes> viajes)
+        {
+
+            dataGridViewViajes.Rows.Clear();
+            if (viajes != null)
+            {
+
+                // Agrega las filas a la tabla en la GUI
+                for (int i = 0; i < viajes.Count(); i++)
+                {
+                    dataGridViewViajes.Rows.Add(viajes[i].PlacaCamion, viajes[i].NumeroGuia, viajes[i].ViajeCodigo, viajes[i].Estado);
+                }
+            }
+            else
+            {
+                dataGridViewViajes.Rows.Clear();
+            }
+        }
         // Método para cargar datos
         public void LoadData()
         {
@@ -101,7 +123,6 @@ namespace Transporte_Polar.Ventanas
             }
             else { }
         }
-
         // Método para llenar la tabla de la GUI con la información de los viajes
         public void FillTable(List<Viajes> viajes, List<Camion> camiones)
         {
