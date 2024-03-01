@@ -445,7 +445,16 @@ namespace Transporte_Polar.Ventanas
             {
                 MessageBox.Show("Completa todos los campos");
             }
-
+            placaCamion = textBoxPlacaPorViaje.Text;
+            var lista = Repositorio.ListaCamiones();
+            Camion camionadmi = lista.Find(x => x.PlacaCamion == placaCamion);
+            if (camionadmi == null)
+            {
+                MessageBox.Show("La placa del camion no existe ");
+                return;
+            }
+            
+                
             else
             {
                 // Se carga la lista de viajes
