@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace Transporte_Polar.Ventanas
         public string viajecodigo;
         public int precio;
 
+        public List<Camion> camiones; 
+        public List<Viajes> viajes; 
+
         public string fileName = "Camion";
         public string fileNameCodigos = "Codigos";
         public string fileNameViajes = "Viajes";
@@ -47,16 +51,17 @@ namespace Transporte_Polar.Ventanas
 
         public void LoadCamion()
         {
+            // Obtiene la lista de camiones desde el repositorio
             List<Camion> camion = Repositorio.ListaCamiones();
-            
-            // Extrae los ids de camiones y viajes y los muestra en el Data Grid View
+
+            // Llena el DataGridView con la lista de camiones
             if (camion != null)
             {
-                FillCamiones( camion);
+                FillCamiones(camion);
             }
-            else 
+            else
             {
-                
+                dataGridViewCamiones.Rows.Clear();
             }
         }
         //metodo para llenar la lista de cammiones
@@ -80,16 +85,17 @@ namespace Transporte_Polar.Ventanas
         }
         public void LoadViajes()
         {
+            // Obtiene la lista de viajes desde el repositorio
             List<Viajes> viaje = RepositorioViajes.ListaViajes();
 
-            // Extrae los ids de camiones y viajes y los muestra en el Data Grid View
+            // Llena el DataGridView con la lista de viajes
             if (viaje != null)
             {
                 FillViajes(viaje);
             }
             else
             {
-
+                dataGridViewViajes.Rows.Clear();
             }
         }
         //metodo para llenar la lista de cammiones
@@ -97,7 +103,7 @@ namespace Transporte_Polar.Ventanas
         {
 
             dataGridViewViajes.Rows.Clear();
-            if (viajes != null)
+            if (viajes != null && viajes.Count !=0)
             {
 
                 // Agrega las filas a la tabla en la GUI
@@ -126,13 +132,10 @@ namespace Transporte_Polar.Ventanas
         // Método para llenar la tabla de la GUI con la información de los viajes
         public void FillTable(List<Viajes> viajes, List<Camion> camiones)
         {
-            int contadorR1 = 0;
-            int contadorR2 = 0;
-            int contadorR3 = 0;
+            int contadorR1 = 0, contadorR2 = 0, contadorR3 = 0;
             dataGridViewCuentasporPagar.Rows.Clear();
             if (viajes != null && camiones != null)
             {
-                // Cuenta la cantidad de cada tipo de viaje
                 foreach (Viajes v in viajes)
                 {
                     if (v.ViajeCodigo == "R1" && v.Estado == "Realizado")
@@ -142,19 +145,15 @@ namespace Transporte_Polar.Ventanas
                     else if (v.ViajeCodigo == "R3" && v.Estado == "Realizado")
                         contadorR3++;
                 }
-                // Agrega las filas a la tabla en la GUI
                 for (int i = 0; i < viajes.Count(); i++)
                 {
-                    if (viajes[i].Estado == "Realizado")
+                    if (viajes[i].Estado == "Realizado" )
                     {
-
-
-
                         if (viajes[i].ViajeCodigo == "R1")
-                            dataGridViewCuentasporPagar.Rows.Add(viajes[i].PlacaCamion, viajes[i].NumeroGuia,viajes[i].ViajeCodigo, contadorR1);
+                            dataGridViewCuentasporPagar.Rows.Add(viajes[i].PlacaCamion, viajes[i].NumeroGuia, viajes[i].ViajeCodigo, contadorR1);
                         else if (viajes[i].ViajeCodigo == "R2")
                             dataGridViewCuentasporPagar.Rows.Add(viajes[i].PlacaCamion, viajes[i].NumeroGuia, viajes[i].ViajeCodigo, contadorR2);
-                        else
+                        else if (viajes[i].ViajeCodigo == "R3")
                             dataGridViewCuentasporPagar.Rows.Add(viajes[i].PlacaCamion, viajes[i].NumeroGuia, viajes[i].ViajeCodigo, contadorR3);
                     }
                 }
@@ -232,30 +231,29 @@ namespace Transporte_Polar.Ventanas
 
 
 
-            if (string.IsNullOrEmpty(textBoxPlacaPorViaje.Text)|| textBoxPlacaPorViaje.Text == string.Empty || string.IsNullOrWhiteSpace(textBoxNumeroGuia.Text) ||
-                (!radioButtonPagado.Checked && !radioButtonRealizado.Checked))
+            if (textBoxCodigoViaje.Text == string.Empty)
             {
-                MessageBox.Show("Llena todos los campos");
-                return;
-            }
-            CargarDatosViajes();
-            if (File.Exists(fileNameViajes))
-            {
-                var list = RepositorioViajes.ListaViajes();
-                list.Add(viaje);
-                RepositorioViajes.ListSaveViajes(list);
-                MessageBox.Show("Viaje Incluido exitosamente");
-                Clear();
+                MessageBox.Show("Introduce el codigo del viaje");
             }
             else
             {
-                var list = new List<Viajes>();
-                list.Add(viaje);
-                RepositorioViajes.ListSaveViajes(list);
-                MessageBox.Show("Viaje Incluido exitosamente");
-                Clear();
+                codigoViaje = textBoxCodigoViaje.Text;
+
+                var list = RepositorioCodigos.ListaCodigos();
+
+                Codigo codigoadmin = list.Find(x => x.Codigos.ToLower() == codigoViaje.ToLower());
+                if (codigoadmin != null)
+                {
+                    textBoxDestinos.Text = codigoadmin.Destinos;
+                    textBoxPrecio.Text = codigoadmin.Precio.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("No se encuentra el Codigo del viaje");
+                    Clear();
+                }
             }
-            
+
         }
 
         // Evento al hacer click en "Buscar Viajes"
@@ -285,7 +283,8 @@ namespace Transporte_Polar.Ventanas
                 }
                 else
                 {
-                    MessageBox.Show("No se encuentra el viaje");
+                    MessageBox.Show("No se encuentra el Numero de guia");
+                    Clear();
                 }
             }
         }
@@ -343,30 +342,47 @@ namespace Transporte_Polar.Ventanas
         private void buttonIncluirCodigo_Click(object sender, EventArgs e)
         {
             // Verificar si todos los campos tienen datos
-            if (!CamposEstanLlenos())
+            if (textBoxCodigoViaje.Text == string.Empty || textBoxDestinos.Text == string.Empty || textBoxPrecio.Text == string.Empty)
             {
                 MessageBox.Show("Por favor, completa todos los campos antes de guardar.");
                 return;
             }
-            CargarDatosCodigo();
-            if (File.Exists(fileNameCodigos))
-            {
-                var list = RepositorioCodigos.ListaCodigos();
-                list.Add(codigo);
-                RepositorioCodigos.ListSaveCodigos(list);
-                MessageBox.Show("Codigo Incluido existosamente");
-                Clear();
-            }
             else
             {
-                var list = new List<Codigo>(); // crear nueva lista si no existe
-                list.Add(codigo); // añadir nuevo código
-                RepositorioCodigos.ListSaveCodigos(list);
-                MessageBox.Show("Codigo Incluido existosamente");
-                Clear();
+                codigoViaje = textBoxCodigoViaje.Text;
+                var lista = RepositorioCodigos.ListaCodigos();
+                Codigo codigoadmin = lista.Find(c => c.Codigos.ToLower() == codigoViaje.ToLower());
+                if (codigoadmin != null)
+                {
+                    MessageBox.Show("Codigo Ya existente");
+                    Clear();
+                    return;
+
+                }
+                else
+                {
+
+
+                    CargarDatosCodigo();
+                    if (File.Exists(fileNameCodigos))
+                    {
+                        var list = RepositorioCodigos.ListaCodigos();
+                        list.Add(codigo);
+                        RepositorioCodigos.ListSaveCodigos(list);
+                        MessageBox.Show("Codigo Incluido existosamente");
+                        Clear();
+                    }
+                    else
+                    {
+                        var list = new List<Codigo>(); // crear nueva lista si no existe
+                        list.Add(codigo); // añadir nuevo código
+                        RepositorioCodigos.ListSaveCodigos(list);
+                        MessageBox.Show("Codigo Incluido existosamente");
+                        Clear();
+                    }
+                }
             }
         }
-
         // Evento al hacer click en "Buscar Camión"
         private void buttonBuscarCamion_Click(object sender, EventArgs e)
         {
@@ -411,7 +427,7 @@ namespace Transporte_Polar.Ventanas
             }
             else
             {
-                MessageBox.Show("");
+                MessageBox.Show("Llena todos los Campos");
             }
 
                     
@@ -424,29 +440,46 @@ namespace Transporte_Polar.Ventanas
 
         private void buttonIncluirViajes_Click_1(object sender, EventArgs e)
         {
-           
-
-            CargarDatosViajes();
-            if (File.Exists(fileNameViajes))
+         //Se verifica si los campos necesarios están vacíos
+        if ((textBoxNumeroGuia.Text == string.Empty) || (textBoxPlacaPorViaje.Text == string.Empty)|| (comboBoxCodigoViaje.SelectedIndex == -1))
             {
-                var list = RepositorioViajes.ListaViajes();
-                list.Add(viaje);
-                RepositorioViajes.ListSaveViajes(list);
-                MessageBox.Show("Viaje Incluido exitosamente");
-                Clear();
+                MessageBox.Show("Completa todos los campos");
             }
+
             else
             {
-                var list = new List<Viajes>();
-                list.Add(viaje);
-                RepositorioViajes.ListSaveViajes(list);
-                MessageBox.Show("Viaje Incluido exitosamente");
-                Clear();
+                // Se carga la lista de viajes
+                CargarDatosViajes();
+                if (File.Exists(fileNameViajes))
+                {
+                    // Se obtiene la lista existente de viajes
+                    var list = RepositorioViajes.ListaViajes();
+                    // Se agrega el nuevo viaje a la lista
+                    list.Add(viaje);
+                    // Se guarda la lista actualizada
+                    RepositorioViajes.ListSaveViajes(list);
+                    MessageBox.Show("Viaje Incluido exitosamente");
+                    // Se limpian los campos
+                    Clear();
+                }
+                else
+                {
+                    // Si no existe el archivo de viajes, se crea una nueva lista
+                    var list = new List<Viajes>();
+                    // Se agrega el nuevo viaje a la lista
+                    list.Add(viaje);
+                    // Se guarda la lista
+                    RepositorioViajes.ListSaveViajes(list);
+                    MessageBox.Show("Viaje Incluido exitosamente");
+                    // Se limpian los campos
+                    Clear();
+                }
             }
         }
 
         private void MenuPrincipal_Load_1(object sender, EventArgs e)
         {
+            
             // Cargar lista de códigos en el ComboBox de la GUI
             var list = RepositorioCodigos.ListaCodigos();
             foreach (var item in list)
@@ -485,8 +518,43 @@ namespace Transporte_Polar.Ventanas
             }
 
         }
+        //metodos para buscar el camion que tenga pago pendiente
+        public List<Viajes> Search( string desc)
+        {
 
-     
+            string descripcion = textBoxSearch.Text;
+            List<Viajes> list = RepositorioViajes.ListaViajes();
+
+            return list.FindAll(x => x.PlacaCamion.ToLower().Contains((desc.ToLower())));
+        }
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+                List<Viajes> list;
+            camiones = Repositorio.ListaCamiones();
+
+
+                list = Search(textBoxSearch.Text);
+
+                FillTable(list, camiones);
+            
+        }
+        //metodo para buscar un viaje por numero de guia o placa del camion
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+           
+            List<Viajes> list;            
+            list = SearchViajes(textBox2.Text);
+            FillViajes(list);
+        }
+        public List<Viajes> SearchViajes(string desc)
+        {
+            string descripcion = textBox2.Text;
+            List<Viajes> list = RepositorioViajes.ListaViajes();
+            return list.FindAll(x => x.NumeroGuia.ToLower().Contains((desc.ToLower()))||x.PlacaCamion.ToLower().Contains(desc.ToLower()));
+        }
+
+       
+
 
         // Método para cargar datos de un código de viaje
         public void CargarDatosCodigo()
@@ -519,23 +587,52 @@ namespace Transporte_Polar.Ventanas
         private void buttonIncluirCamion_Click(object sender, EventArgs e)
 
         {
-            
-            CargarDatosCamion();
-            if (File.Exists(fileName))
+            if((textBoxCedulaChofer.Text == string.Empty) || (textBoxPlacaCamion.Text == string.Empty))
             {
-                var list = Repositorio.ListaCamiones();
-                list.Add(camion);
-                Repositorio.ListSave(list);
-                MessageBox.Show("Camion Incluido existosamente");
-
+                MessageBox.Show("Completa todos los campos");
+                return;
             }
-            else
+            placaCamion = textBoxPlacaCamion.Text;
+            var lista = Repositorio.ListaCamiones();
+            Camion camionadmi = lista.Find(x => x.PlacaCamion == placaCamion);
+            if (camionadmi != null)
             {
-                var list = new List<Camion>(); //crear nueva lista si no existe
-                list.Add(camion); //anadir nuevo camion
-                Repositorio.ListSave(list);
-                MessageBox.Show("Camion Incluido existosamente");
+                MessageBox.Show("la placa ya existe ");
+                Clear();
+                return;
+            }
+                else
+                {
+                CargarDatosCamion();
+                if (File.Exists(fileName))
+                {
+                    var list = Repositorio.ListaCamiones();
+                    list.Add(camion);
+                    Repositorio.ListSave(list);
+                    MessageBox.Show("Camion Incluido existosamente");
+                    Clear();
+
+                }
+                else
+                {
+                    var list = new List<Camion>(); //crear nueva lista si no existe
+                    list.Add(camion); //anadir nuevo camion
+                    Repositorio.ListSave(list);
+                    MessageBox.Show("Camion Incluido existosamente");
+                    Clear();
+                }
+                }
             }
         }
-    }
-}
+ }
+            
+
+           
+           
+            
+            
+             
+            
+
+        
+    
