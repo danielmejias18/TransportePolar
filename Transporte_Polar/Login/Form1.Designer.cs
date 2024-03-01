@@ -34,15 +34,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxClave = new System.Windows.Forms.TextBox();
             this.buttonIngresar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Navy;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.panel1.Location = new System.Drawing.Point(-10, -13);
             this.panel1.Name = "panel1";
             this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panel1.Size = new System.Drawing.Size(382, 833);
+            this.panel1.Size = new System.Drawing.Size(382, 425);
             this.panel1.TabIndex = 0;
             // 
             // textBoxUsuario
@@ -81,7 +83,7 @@
             // 
             // buttonIngresar
             // 
-            this.buttonIngresar.BackColor = System.Drawing.Color.Navy;
+            this.buttonIngresar.BackColor = System.Drawing.SystemColors.HotTrack;
             this.buttonIngresar.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonIngresar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonIngresar.Location = new System.Drawing.Point(477, 299);
@@ -92,11 +94,20 @@
             this.buttonIngresar.UseVisualStyleBackColor = false;
             this.buttonIngresar.Click += new System.EventHandler(this.buttonIngresar_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(0, -10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(373, 402);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Cyan;
-            this.ClientSize = new System.Drawing.Size(854, 399);
+            this.ClientSize = new System.Drawing.Size(825, 394);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonIngresar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxClave);
@@ -105,6 +116,8 @@
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,6 +131,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxClave;
         private System.Windows.Forms.Button buttonIngresar;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

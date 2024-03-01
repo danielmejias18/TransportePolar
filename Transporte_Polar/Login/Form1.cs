@@ -24,6 +24,12 @@ namespace Transporte_Polar
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Image.FromFile(@"C:\Users\mejia\Desktop\C#\giphy.gif");
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
         private void buttonIngresar_Click(object sender, EventArgs e)
         {
             // Checks if the ID text field is empty.
